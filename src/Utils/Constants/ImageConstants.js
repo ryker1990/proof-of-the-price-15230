@@ -1,6 +1,6 @@
 //--------------------------------Image Constants--------------------------
 const imageConstants = {
-  logoImg: require('../../images/logo.png'),
+  logoImg: require('../../Images/logo.png'),
 };
 
 export default imageConstants;

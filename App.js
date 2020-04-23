@@ -1,10 +1,11 @@
 import {createAppContainer} from 'react-navigation';
-import{createStackNavigator} from 'react-navigation-stack';
-import WelcomeScreen from './src/screen/WelcomeScreen';
-import SignUpScreen from './src/screen/SignUpScreen';
-import LoginScreen from './src/screen/LoginScreen';
-import ResetPassword from './src/screen/ResetPassword';
-import ForgotPassword from './src/screen/ForgotPassword';
+import {createStackNavigator} from 'react-navigation-stack';
+import WelcomeScreen from './src/Screens/WelcomeScreen';
+import SignUpScreen from './src/Screens/SignUpScreen';
+import LoginScreen from './src/Screens/LoginScreen';
+import ResetPassword from './src/Screens/ResetPassword';
+import ForgotPassword from './src/Screens/ForgotPassword';
+import EmailVerify from './src/Screens/EmailVerifyScreen';
 
 const Router = createStackNavigator(
   {
@@ -12,7 +13,8 @@ const Router = createStackNavigator(
     SignUpScreen,
     WelcomeScreen,
     ForgotPassword,
-    ResetPassword
+    ResetPassword,
+    EmailVerify,
   },
   {
     initialRouteName: 'WelcomeScreen',
