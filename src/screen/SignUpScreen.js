@@ -94,11 +94,11 @@ export default class SignUpScreen extends Component {
 
       api
         .signUpService(emailAddress, password, zipCode)
-        .then(data => {
-          // console.log(data);
+        .then((data) => {
+          console.log(data);
           alert('success');
         })
-        .catch(error => {
+        .catch((error) => {
           alert('error');
         });
 

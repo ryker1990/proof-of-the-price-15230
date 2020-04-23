@@ -2,13 +2,12 @@ import axios from 'axios';
 
 //String Constants
 import stringConstants from '../Utils/Constants/StringConstants';
-import {exp} from 'react-native-reanimated';
 
 class API {
   //----------------------------------------------------SignUp API--------------------------------------
-  signUpService(emailStr, passwordStr, zipCodeStr) {
+  signUpService = async(emailStr, passwordStr, zipCodeStr)  => {
     return new Promise((resolve, reject) => {
-      axios
+      await axios
         .post(stringConstants.baseURL + 'signup', {
           userType: 'user',
           email: emailStr,
@@ -17,7 +16,7 @@ class API {
         })
         .then(function(response) {
           // alert('response');
-          console.log(response.data);
+          // console.log(response.data);
           resolve(response.body);
         })
         .catch(function(error) {
