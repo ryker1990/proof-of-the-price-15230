@@ -26,7 +26,7 @@ export default class ForgotPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      emailAddress: '',
       validEmail: false,
       isLoading: false,
     };
@@ -54,7 +54,7 @@ export default class ForgotPassword extends Component {
   }
 
   sendOtp = () => {
-    const {email, validEmail} = this.state;
+    const {emailAddress, validEmail} = this.state;
     const nav = this.props.navigation.navigate;
 
     if (!validEmail) alert(stringConstants.invalidEmail);
@@ -65,15 +65,16 @@ export default class ForgotPassword extends Component {
       this.setState({isLoading: true});
 
       api
-        .resetPasswordService(email)
+        .resetPasswordService(emailAddress)
         .then(data => {
-          console.log(data.data);
+          console.log(data);
           this.setState({isLoading: false});
 
           if (data.data.status) {
-            nav('ResetPassword', {
-              otp: '1234',
-            });
+            alert(data.data.msg);
+            // nav('ResetPassword', {
+            //   otp: data.data.token,
+            // });
           } else {
             alert(data.data.msg);
           }

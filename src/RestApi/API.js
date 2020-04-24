@@ -12,7 +12,7 @@ class API {
           userType: 'user',
           email: emailStr,
           password: passwordStr,
-          zipcode: zipCodeStr,
+          zipCode: zipCodeStr,
         })
         .then(function(response) {
           resolve(response);

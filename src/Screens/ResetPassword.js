@@ -5,6 +5,7 @@ import {
   Text,
   StatusBar,
   ProgressBarAndroid,
+  Number,
 } from 'react-native';
 import GreyColorButton from '../Button/GreyColorButton';
 import BlackColorButton from '../Button/BlackColorButton';
@@ -24,7 +25,7 @@ export default class ResetPassword extends Component {
     super(props);
     this.state = {
       newPassword: '',
-      otp: '',
+      otp: 12,
       confirmPassword: '',
       validOtp: false,
       validPassword: false,
@@ -48,6 +49,7 @@ export default class ResetPassword extends Component {
 
   handleOtpChange(otp) {
     var otpProp = this.props.otp;
+    var otp = Number(otp);
 
     if (otp == otpProp) {
       this.setState({validOtp: true});

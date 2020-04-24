@@ -104,18 +104,18 @@ export default class SignUpScreen extends Component {
 
       api
         .signUpService(emailAddress, password, zipCode)
-        .then((data) => {
+        .then(data => {
           console.log(data.data);
           this.setState({isLoading: false});
           if (data.data.status) {
-            alert(data.data.msg);
+            alert('Sign Up Successfully');
             //-------------------Sending Back To The Login Screen-----------------------
             goBack();
           } else {
             alert(data.data.msg);
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({isLoading: false});
           alert('error: ' + error);
         });
