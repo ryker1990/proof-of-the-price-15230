@@ -67,14 +67,14 @@ export default class ForgotPassword extends Component {
       api
         .resetPasswordService(emailAddress)
         .then(data => {
-          console.log(data);
+          console.log(data.data);
           this.setState({isLoading: false});
 
           if (data.data.status) {
             alert(data.data.msg);
-            // nav('ResetPassword', {
-            //   otp: data.data.token,
-            // });
+            nav('ResetPassword', {
+              otp: data.data.token,
+            });
           } else {
             alert(data.data.msg);
           }

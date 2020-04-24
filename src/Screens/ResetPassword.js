@@ -38,6 +38,7 @@ export default class ResetPassword extends Component {
     this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(
       this,
     );
+    this.sumbit = this.sumbit.bind(this);
   }
 
   componentDidMount() {
@@ -48,8 +49,9 @@ export default class ResetPassword extends Component {
   //--------------------------------------Validating Fields----------------------------
 
   handleOtpChange(otp) {
-    var otpProp = this.props.otp;
-    var otp = Number(otp);
+    const {state} = this.props.navigation;
+    var otpProp = '' + state.params.otp;
+    this.setState({otp: otp});
 
     if (otp == otpProp) {
       this.setState({validOtp: true});
@@ -82,17 +84,24 @@ export default class ResetPassword extends Component {
 
   sumbit() {
     const {otp, password, validOtp, validPassword, passwordMatch} = this.state;
+    const nav = this.props.navigation.navigate;
 
     if (!validOtp) alert(stringConstants.invalidOtp);
     else if (!validPassword) alert(stringConstants.invalidPassword);
     else if (!passwordMatch) alert(stringConstants.invalidConfirmPassword);
     else {
       api
-        .addNewPasswordService(otp, password)
+        .addNewPasswordService(parseInt(otp), password)
         .then(data => {
           console.log(data.data);
           this.setState({isLoading: false});
-          alert(data.data.msg);
+
+          if (data.data.status) {
+            alert(data.data.msg);
+            nav('LoginScreen');
+          } else {
+            alert(data.data.msg);
+          }
         })
         .catch(error => {
           this.setState({isLoading: false});
@@ -102,7 +111,6 @@ export default class ResetPassword extends Component {
   }
 
   render() {
-    // const nav = this.props.navigation.navigate;
     return (
       <View style={styles.wrapper}>
         {/* ----------------------------Reset Password Text--------------------------- */}
