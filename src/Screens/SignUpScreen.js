@@ -91,7 +91,7 @@ export default class SignUpScreen extends Component {
       zipCode,
     } = this.state;
 
-    // const {navigate} = this.props.navigation;
+    const {state, goBack} = this.props.navigation;
 
     if (!validEmail) alert(stringConstants.invalidEmail);
     else if (!validPassword) alert(stringConstants.invalidPassword);
@@ -104,12 +104,18 @@ export default class SignUpScreen extends Component {
 
       api
         .signUpService(emailAddress, password, zipCode)
-        .then(data => {
+        .then((data) => {
           console.log(data.data);
           this.setState({isLoading: false});
-          alert(data.data.msg);
+          if (data.data.status) {
+            alert(data.data.msg);
+            //-------------------Sending Back To The Login Screen-----------------------
+            goBack();
+          } else {
+            alert(data.data.msg);
+          }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({isLoading: false});
           alert('error: ' + error);
         });

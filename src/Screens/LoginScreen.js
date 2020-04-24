@@ -80,12 +80,17 @@ export default class LoginScreen extends Component {
 
       api
         .signInService(email, password)
-        .then(data => {
+        .then((data) => {
           console.log(data.data);
           this.setState({isLoading: false});
-          alert(data.data.msg);
+
+          if (data.data.status) {
+            alert('Login Success');
+          } else {
+            alert(data.data.msg);
+          }
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({isLoading: false});
           alert('error: ' + error);
         });
