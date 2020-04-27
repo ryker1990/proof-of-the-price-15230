@@ -5,7 +5,7 @@ import {
   Text,
   StatusBar,
   Keyboard,
-  ProgressBarAndroid,
+  ActivityIndicator,
 } from 'react-native';
 import GreyColorButton from '../Button/GreyColorButton';
 import BlackColorButton from '../Button/BlackColorButton';
@@ -80,7 +80,7 @@ export default class LoginScreen extends Component {
 
       api
         .signInService(email, password)
-        .then((data) => {
+        .then(data => {
           console.log(data.data);
           this.setState({isLoading: false});
 
@@ -90,7 +90,7 @@ export default class LoginScreen extends Component {
             alert(data.data.msg);
           }
         })
-        .catch((error) => {
+        .catch(error => {
           this.setState({isLoading: false});
           alert('error: ' + error);
         });
@@ -128,7 +128,7 @@ export default class LoginScreen extends Component {
         <View style={styles.buttonStyle}>
           {this.state.isLoading ? (
             <View>
-              <ProgressBarAndroid />
+              <ActivityIndicator size={'large'} />
             </View>
           ) : (
             <GreyColorButton

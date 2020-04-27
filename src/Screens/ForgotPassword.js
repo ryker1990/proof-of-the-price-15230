@@ -6,7 +6,7 @@ import {
   Text,
   StatusBar,
   Keyboard,
-  ProgressBarAndroid,
+  ActivityIndicator,
 } from 'react-native';
 import GreyColorButton from '../Button/GreyColorButton';
 import BlackColorButton from '../Button/BlackColorButton';
@@ -109,7 +109,7 @@ export default class ForgotPassword extends Component {
         <View style={styles.buttonStyle}>
           {this.state.isLoading ? (
             <View>
-              <ProgressBarAndroid />
+              <ActivityIndicator size={'large'} />
             </View>
           ) : (
             <GreyColorButton

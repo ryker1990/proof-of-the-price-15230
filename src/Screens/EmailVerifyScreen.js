@@ -5,7 +5,7 @@ import {
   Text,
   StatusBar,
   Keyboard,
-  ProgressBarAndroid,
+  ActivityIndicator,
 } from 'react-native';
 import GreyColorButton from '../Button/GreyColorButton';
 import InputFields from '../TextFields/InputFields';
@@ -103,7 +103,7 @@ export default class EmailVerifyScreen extends Component {
         <View style={styles.buttonStyle}>
           {this.state.isLoading ? (
             <View>
-              <ProgressBarAndroid />
+              <ActivityIndicator size={'large'} />
             </View>
           ) : (
             <GreyColorButton

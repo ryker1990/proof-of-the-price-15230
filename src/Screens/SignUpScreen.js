@@ -5,7 +5,7 @@ import {
   Text,
   Keyboard,
   StatusBar,
-  ProgressBarAndroid,
+  ActivityIndicator,
 } from 'react-native';
 import GreyColorButton from '../Button/GreyColorButton';
 import BlackColorButton from '../Button/BlackColorButton';
@@ -158,7 +158,7 @@ export default class SignUpScreen extends Component {
 
           {this.state.isLoading ? (
             <View>
-              <ProgressBarAndroid />
+              <ActivityIndicator size={'large'} />
             </View>
           ) : (
             <GreyColorButton
